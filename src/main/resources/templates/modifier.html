@@ -57,7 +57,7 @@
 
             <div>
 
-                <form th:action="@{/carte/ajouter}" method="POST" th:object="${produit}" >
+                <form th:action="@{/carte/modifier}" method="POST" th:object="${produit}" >
                     <div class="mb-3">
                         <label for="id" class="form-label">ID</label>
                         <input type="text" class="form-control" id="id" th:field="*{id}" >

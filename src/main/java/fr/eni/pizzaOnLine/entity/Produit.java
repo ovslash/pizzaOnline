@@ -30,6 +30,13 @@ public class Produit {
 		this.prix = prix;
 		this.urlImage = urlImage;
 	}
+	
+	public Produit(Long id) {
+		super();
+		this.id = id;
+		
+	}
+	
 
 	public Long getId() {
 		return id;
