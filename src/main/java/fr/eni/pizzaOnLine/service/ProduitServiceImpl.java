@@ -3,12 +3,17 @@ package fr.eni.pizzaOnLine.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.eni.pizzaOnLine.entity.Produit;
+import fr.eni.pizzaOnLine.repository.ProduitRepository;
 
 @Service
 public class ProduitServiceImpl implements ProduitService {
+	
+	@Autowired
+	private ProduitRepository produitRepository;
 
 	private List<Produit> lstproduits = new ArrayList<Produit>();
 
@@ -25,12 +30,14 @@ public class ProduitServiceImpl implements ProduitService {
 	@Override
 	public List<Produit> consulterProduits() {
 		// TODO Auto-generated method stub
-		return lstproduits;
+		return produitRepository.findAll();
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public void sauvegarderProduit(Produit produit) {
-		lstproduits.add(produit);
+		//lstproduits.add(produit);
+		produitRepository.save(produit);
 
 	}
 
@@ -38,9 +45,11 @@ public class ProduitServiceImpl implements ProduitService {
 	public void supprimerProduit(Long id) {
 		// TODO Auto-generated method stub
 
-		Produit p = new Produit();
-		p.setId(id);
-		lstproduits.remove(p);
+//		Produit p = new Produit();
+//		p.setId(id);
+//		lstproduits.remove(p);
+		
+		produitRepository.deleteById(id);
 
 	}
 
@@ -55,6 +64,8 @@ public class ProduitServiceImpl implements ProduitService {
 				break;
 			}
 		}
+		
+		
 
 	}
 
@@ -68,6 +79,8 @@ public class ProduitServiceImpl implements ProduitService {
 			}
 		}
 		return null;
+		
+		///// produitRepository.findById(id)
 	}
 
 }
