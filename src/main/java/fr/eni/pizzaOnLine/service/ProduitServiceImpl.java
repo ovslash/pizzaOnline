@@ -56,31 +56,31 @@ public class ProduitServiceImpl implements ProduitService {
 	@Override
 	public void modifierProduit(Produit produit) {
 		// TODO Auto-generated method stub
-		for (Produit produitOrigine : lstproduits) {
-			if (produitOrigine.equals(produit)) {
-
-				lstproduits.remove(produitOrigine);
-				lstproduits.add(produit);
-				break;
-			}
-		}
+//		for (Produit produitOrigine : lstproduits) {
+//			if (produitOrigine.equals(produit)) {
+//
+//				lstproduits.remove(produitOrigine);
+//				lstproduits.add(produit);
+//				break;
+//			}
+//		}
 		
-		
+		produitRepository.save(produit);
 
 	}
 
 	@Override
 	public Produit findById(Long id) {
-		Produit produit = new Produit(id);
-		for (Produit produitOrigine : lstproduits) {
-			if (produitOrigine.equals(produit)) {
-
-				return produitOrigine;
-			}
-		}
-		return null;
+//		Produit produit = new Produit(id);
+//		for (Produit produitOrigine : lstproduits) {
+//			if (produitOrigine.equals(produit)) {
+//
+//				return produitOrigine;
+//			}
+//		}
+//		return null;
 		
-		///// produitRepository.findById(id)
+		return produitRepository.findById(id).orElse(null);
 	}
 
 }

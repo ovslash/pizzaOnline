@@ -58,11 +58,11 @@
             <div>
 
                 <form th:action="@{/carte/modifier}" method="POST" th:object="${produit}" >
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="id" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="id" th:field="*{id}" >
+                        <input type="text" readonly class="form-control" id="id" th:field="*{id}" >
                         
-                    </div>
+                    </div> -->
                    
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
@@ -83,8 +83,8 @@
                     </div>   
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile" th:field="*{urlImage}">
+                        <label for="formFile" class="form-label">URL de l'image</label>
+                        <input class="form-control" type="text" id="formFile" th:field="*{urlImage}">
                     </div>
 
                     <div class="mb-3">
