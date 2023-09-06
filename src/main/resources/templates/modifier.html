@@ -58,11 +58,11 @@
             <div>
 
                 <form th:action="@{/carte/modifier}" method="POST" th:object="${produit}" >
-                    <!-- <div class="mb-3">
+                    <div class="mb-3 visually-hidden">
                         <label for="id" class="form-label">ID</label>
                         <input type="text" readonly class="form-control" id="id" th:field="*{id}" >
                         
-                    </div> -->
+                    </div> 
                    
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
@@ -85,6 +85,13 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label">URL de l'image</label>
                         <input class="form-control" type="text" id="formFile" th:field="*{urlImage}">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="type" class="form-label">Type</label>
+                      <select class="form-control" id="type" th:field="*{typeProduit}" >
+                        <option th:value="${type.id}" th:each="type:${@produitService.findAllTypeProduit()} " th:text="${type.libelle}"></option>
+                      </select>
                     </div>
 
                     <div class="mb-3">

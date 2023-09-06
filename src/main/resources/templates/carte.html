@@ -59,14 +59,15 @@
             <!--  --------------- DYNAMIQUE --------------- -->
 
             <div class="row my-5">
-                <div class="col-8 offset-2 d-flex">
+                <div class="col-8 offset-2 d-flex flex-wrap">
 
                     <div class="card" style="width: 18rem;" th:each="produit : ${produits}">
                         <img th:src="${produit.urlImage}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title" th:text="${produit.nom}">Exemple de nom de pizza</h5>
                           <p class="card-text" th:text="${produit.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="card-text" th:text="${produit.prix}">Prix : 15€</p>
+                          <p class="card-text" th:text="${produit.prix}"></p>
+                          <p class="card-text" th:text="${produit.typeProduit.libelle}">Type</p>
                           <a th:href="@{/carte/modifier(id=${produit.id})}" class="btn btn-primary">Modifier</a>
                           <a th:href="@{/carte/supprimer(id=${produit.id})}" class="btn btn-primary">Supprimer</a>
     
