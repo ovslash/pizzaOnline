@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.eni.pizzaOnLine.entity.Commande;
 import fr.eni.pizzaOnLine.entity.Produit;
+import fr.eni.pizzaOnLine.service.CommandeService;
 import fr.eni.pizzaOnLine.service.ProduitService;
 
 @Controller
@@ -16,6 +18,9 @@ public class MainController {
 
 	@Autowired
 	ProduitService produitService;
+	
+	@Autowired
+	CommandeService commandeService;
 
 	// private List<Produit> lstproduits = new ArrayList<Produit>();
 
@@ -60,9 +65,27 @@ public class MainController {
 	@PostMapping("/carte/modifier")
 	public String modifierProduit(@ModelAttribute Produit produit) {
 
-		System.err.println(produit);
-		
+				
 		produitService.modifierProduit(produit);
+		return "redirect:/carte";
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////// COMMANDE
+	
+	@GetMapping("/commander")
+	public String enregistrementCommande(Model model) {
+		model.addAttribute("commande", new Commande());
+		model.addAttribute("produits", produitService.consulterProduits());
+		return "commander";
+
+	}
+	
+	
+	
+	@PostMapping("/commander")
+	public String enregistrementCommande(@ModelAttribute Commande commande) {
+		commandeService.sauvegarderCommande(commande);
 		return "redirect:/carte";
 	}
 }
